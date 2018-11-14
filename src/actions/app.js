@@ -17,44 +17,19 @@ const updatePage = page => ({
 const loadPage = page => dispatch => {
   switch (page) {
     case 'home':
-      import('../components/page-home.js').then(() => {
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
+      import('../components/page-home.js');
       break;
     case 'terra':
-      import('../components/page-terra.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-aqua.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
+      import('../components/page-terra.js');
       break;
     case 'aqua':
-      import('../components/page-aqua.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
+      import('../components/page-aqua.js');
       break;
     case 'vscode':
-      import('../components/page-vscode.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-fun.js');
-      });
+      import('../components/page-vscode.js');
       break;
     case 'fun':
-      import('../components/page-fun.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-vscode.js');
-      });
+      import('../components/page-fun.js');
       break;
     default:
       // eslint-disable-next-line no-param-reassign
