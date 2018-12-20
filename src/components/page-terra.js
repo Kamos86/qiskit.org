@@ -81,7 +81,7 @@ class PageTerra extends localize(i18next)(PageViewElement) {
               </vaadin-button>
             </a>
             <a
-                href="/documentation/"
+                href="${this.getDocumentationLink()}/"
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
@@ -90,7 +90,7 @@ class PageTerra extends localize(i18next)(PageViewElement) {
               </vaadin-button>
             </a>
             <a
-                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb"
+                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#1.2-Qiskit-Terra"
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">

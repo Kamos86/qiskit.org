@@ -81,7 +81,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
           <h2>${i18next.t('pages.aqua.headerSubTitle')}</h2>
           <div class="badges">
             <a
-                href="https://github.com/Qiskit/aqua"
+                href="https://github.com/Qiskit/qiskit-aqua"
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
@@ -91,7 +91,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
               </vaadin-button>
             </a>
             <a
-                href="/documentation/aqua/"
+                href="${this.getDocumentationLink()}/aqua/"
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
@@ -100,7 +100,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
               </vaadin-button>
             </a>
             <a
-                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#2.4-Working-with-QISKit-ACQUA-on-near-term-devices"
+                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#1.5-Qiskit-Aqua"
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
@@ -231,7 +231,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
                 </vaadin-button>
               </a>
               <a
-                  href="/documentation/aqua/aqua_chemistry.html"
+                  href="${this.getDocumentationLink()}/aqua/aqua_chemistry.html"
                   target="_blank"
                   rel="noopener"
                   tabindex="-1">

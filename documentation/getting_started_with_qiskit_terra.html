@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans|IBM+Plex+Sans+Condensed|IBM+Plex+Serif" rel="stylesheet">
+
+    
+    <title>Getting Started with Qiskit Terra &#8212; Qiskit Terra 0.7.0 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.blue-indigo.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/themeExt.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The IBM Q provider" href="the_ibmq_provider.html" />
+    <link rel="prev" title="Terra Installation and setup" href="install.html" /> 
+  </head>
+<body>
+  <header>
+    <div class="toolbar limited-width">
+        <a href="https://qiskit.org/" class="home">Qiskit Terra ™</a>
+        <nav class="first">
+        <a href="https://qiskit.org/terra">Terra</a>
+        <a href="https://qiskit.org/aqua">Aqua</a>
+      </nav>
+      <nav class="second">
+        <a href="/documentation/getting_started_with_qiskit_terra.html">English</a> /
+        <a href="/documentation/de/getting_started_with_qiskit_terra.html">German</a> /
+        <a href="/documentation/ja/getting_started_with_qiskit_terra.html">Japanese</a>
+        <a class="external" href="https://qiskit.org/vscode">Tools</a>
+        <a class="external" href="https://qiskit.org/fun">Fun</a>
+      </nav>
+    </div>
+  </header>
+    <div class="mdl-layout mdl-js-layout  mdl-layout--fixed-drawer"><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/qiskit-terra-logo.png" alt="Qiskit Terra"/>
+          </a>
+      </span>
+    
+<div class="globaltoc">
+  <span class="mdl-layout-title toc">Table Of Contents</span>
+  
+  
+      
+      <nav class="mdl-navigation">
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#tools">Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#install-with-visualization-dependencies">Install with visualization dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#setup-with-an-environment">Setup with an environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#setup-a-standalone-version">Setup a standalone version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#building-the-c-libraries">Building the C++ libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-your-api-token-and-ibmq-credentials">Configure your API token and IBMQ credentials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#automatically-loading-credentials">Automatically loading credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#store-api-credentials-locally">Store API credentials locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#manually-loading-credentials">Manually loading credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with Qiskit Terra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-circuit">Building the circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-circuit">Visualize Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qiskit-aer-backends">Qiskit Aer backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#statevector-backend">Statevector backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unitary-backend">Unitary backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openqasm-backend">OpenQASM backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ibmq-backends">IBMQ Backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#real-devices">Real devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hpc-simulator">HPC Simulator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-a-previously-ran-job">Retrieving a previously ran job</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="the_ibmq_provider.html">The IBM Q Provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-provider">The Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#filtering-the-backends">Filtering the backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-backend">The backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-job-object">The Job object</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summary_of_quantum_operations.html">Summary of Quantum Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">Single-Qubit Gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">u gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">Identity gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">Pauli gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#bit-flip-gate"><span class="math notranslate nohighlight">\(X\)</span>: bit-flip gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#bit-and-phase-flip-gate"><span class="math notranslate nohighlight">\(Y\)</span>: bit- and phase-flip gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#phase-flip-gate"><span class="math notranslate nohighlight">\(Z\)</span>: phase-flip gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">Clifford gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#hadamard-gate">Hadamard gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#or-phase-gate"><span class="math notranslate nohighlight">\(S\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#or-conjugate-of-phase-gate"><span class="math notranslate nohighlight">\(S^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#id1"><span class="math notranslate nohighlight">\(T\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#id2"><span class="math notranslate nohighlight">\(T^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">Standard Rotations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-x-axis">Rotation around X-axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-y-axis">Rotation around Y-axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-z-axis">Rotation around Z-axis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">Multi-Qubit Gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-x-or-controlled-not-gate">Controlled-X (or, controlled-NOT) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-gate">Controlled <span class="math notranslate nohighlight">\(Y\)</span> gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-or-controlled-phase-gate">Controlled <span class="math notranslate nohighlight">\(Z\)</span> (or, controlled Phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-around-z-axis">Controlled rotation around Z-axis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-phase-rotation">Controlled phase rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation">Controlled <span class="math notranslate nohighlight">\(u3\)</span> rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#swap-gate">SWAP gate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#three-qubit-gates">Three-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#toffoli-gate-gate">Toffoli gate (<span class="math notranslate nohighlight">\(ccx\)</span> gate)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-swap-gate-fredkin-gate">Controlled swap gate (Fredkin Gate)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#non-unitary-operations">Non unitary operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#measurements">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#reset">Reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#conditional-operations">Conditional operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#arbitrary-initialization">Arbitrary initialization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#further-details">Further details:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Terra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#contributing-to-the-project">Contributing to the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#issue-reporting">Issue reporting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#doubts-solving">Doubts solving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#improvement-proposal">Improvement proposal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#good-first-contributions">Good first contributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#doc">Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#pull-requests">Pull requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CONTRIBUTING.html#pull-request-checklist">Pull request checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CONTRIBUTING.html#commit-messages">Commit messages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#code">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#building">Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#useful-cmake-flags">Useful CMake flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#test">Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#style-guide">Style guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#development-cycle">Development cycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#branch-model">Branch model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#release-cycle">Release cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#what-version-should-i-use-development-or-stable">What version should I use: development or stable?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release history</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#release-notes">Release notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-7-0">Qiskit Terra 0.7.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-7-0">Upgrading to 0.7.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#deprecations">Deprecations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-6-0">Qiskit Terra 0.6.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-6-0">Upgrading to 0.6.0</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-5-0">Qiskit Terra 0.5.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-5-0">Upgrading to 0.5.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#changelog">Changelog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id1">0.7.0 - 2018-12-19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#added">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#changed">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#deprecated">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#fixed">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#removed">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id2">0.6.0 - 2018-10-04</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id3">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id4">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id5">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id6">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id7">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id8">0.5.7 - 2018-07-19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id9">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id10">0.5.6 - 2018-07-06</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id11">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id12">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id13">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id14">0.5.5 - 2018-07-02</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id15">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id16">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id17">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id18">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id19">0.5.4 - 2018-06-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id20">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id21">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id22">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id23">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id24">0.5.3 - 2018-05-29</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id25">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id26">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id27">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id28">0.5.2 - 2018-05-21</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id29">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id30">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id31">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id32">0.5.1 - 2018-05-15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id33">0.5.0 - 2018-05-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#improvements">Improvements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id34">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id35">Deprecated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id36">0.4.15 - 2018-05-07</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id37">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id38">0.4.14 - 2018-04-18</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id39">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id40">0.4.13 - 2018-04-16</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id41">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id42">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id43">0.4.12 - 2018-03-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id44">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id45">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id46">0.4.11 - 2018-03-13</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id47">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id48">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id49">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id50">0.4.10 - 2018-03-06</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id51">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id52">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id53">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id54">0.4.9 - 2018-02-12</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id55">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id56">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id57">0.4.8 - 2018-01-29</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id58">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id59">0.4.7 - 2018-01-26</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id60">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id61">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id62">0.4.6 - 2018-01-22</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id63">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id64">0.4.4 - 2018-01-09</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id65">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id66">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id67">0.4.3 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id68">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id69">0.4.2 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id70">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id71">0.4.0 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id72">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id73">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id74">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id75">Fixed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_autodoc/qiskit.html">Terra SDK Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html">qiskit.qiskiterror module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html#members">Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.unroll.html">qiskit.unroll module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.circuit.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.converters.html">qiskit.converters package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.converters.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.extensions.html">qiskit.extensions package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.extensions.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.mapper.html">qiskit.mapper package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.providers.html">qiskit.providers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qasm.html">qiskit.qasm package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qobj.html">qiskit.qobj package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.result.html">qiskit.result package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.transpiler.html">qiskit.transpiler package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.unrollers.html">qiskit.unrollers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.unrollers.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.validation.html">qiskit.validation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.wrapper.html">qiskit.wrapper package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.wrapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.wrapper.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+      </nav>
+  
+  </div>
+
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/qiskit-terra-logo.png" alt="Qiskit Terra"/>
+          </a>
+      </span>
+    
+<div class="globaltoc">
+  <span class="mdl-layout-title toc">Table Of Contents</span>
+  
+  
+      
+      <nav class="mdl-navigation">
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#tools">Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#install-with-visualization-dependencies">Install with visualization dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#setup-with-an-environment">Setup with an environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#setup-a-standalone-version">Setup a standalone version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#building-the-c-libraries">Building the C++ libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-your-api-token-and-ibmq-credentials">Configure your API token and IBMQ credentials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#automatically-loading-credentials">Automatically loading credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#store-api-credentials-locally">Store API credentials locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#manually-loading-credentials">Manually loading credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with Qiskit Terra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-circuit">Building the circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-circuit">Visualize Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qiskit-aer-backends">Qiskit Aer backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#statevector-backend">Statevector backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unitary-backend">Unitary backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openqasm-backend">OpenQASM backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ibmq-backends">IBMQ Backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#real-devices">Real devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hpc-simulator">HPC Simulator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-a-previously-ran-job">Retrieving a previously ran job</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="the_ibmq_provider.html">The IBM Q Provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-provider">The Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#filtering-the-backends">Filtering the backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-backend">The backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_ibmq_provider.html#the-job-object">The Job object</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summary_of_quantum_operations.html">Summary of Quantum Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">Single-Qubit Gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">u gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">Identity gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">Pauli gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#bit-flip-gate"><span class="math notranslate nohighlight">\(X\)</span>: bit-flip gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#bit-and-phase-flip-gate"><span class="math notranslate nohighlight">\(Y\)</span>: bit- and phase-flip gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#phase-flip-gate"><span class="math notranslate nohighlight">\(Z\)</span>: phase-flip gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">Clifford gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#hadamard-gate">Hadamard gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#or-phase-gate"><span class="math notranslate nohighlight">\(S\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#or-conjugate-of-phase-gate"><span class="math notranslate nohighlight">\(S^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#id1"><span class="math notranslate nohighlight">\(T\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#id2"><span class="math notranslate nohighlight">\(T^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">Standard Rotations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-x-axis">Rotation around X-axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-y-axis">Rotation around Y-axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#rotation-around-z-axis">Rotation around Z-axis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">Multi-Qubit Gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-x-or-controlled-not-gate">Controlled-X (or, controlled-NOT) gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-gate">Controlled <span class="math notranslate nohighlight">\(Y\)</span> gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-or-controlled-phase-gate">Controlled <span class="math notranslate nohighlight">\(Z\)</span> (or, controlled Phase) gate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-around-z-axis">Controlled rotation around Z-axis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-phase-rotation">Controlled phase rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation">Controlled <span class="math notranslate nohighlight">\(u3\)</span> rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#swap-gate">SWAP gate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#three-qubit-gates">Three-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#toffoli-gate-gate">Toffoli gate (<span class="math notranslate nohighlight">\(ccx\)</span> gate)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-swap-gate-fredkin-gate">Controlled swap gate (Fredkin Gate)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html#non-unitary-operations">Non unitary operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#measurements">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#reset">Reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#conditional-operations">Conditional operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#arbitrary-initialization">Arbitrary initialization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#further-details">Further details:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Terra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#contributing-to-the-project">Contributing to the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#issue-reporting">Issue reporting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#doubts-solving">Doubts solving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#improvement-proposal">Improvement proposal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#good-first-contributions">Good first contributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#doc">Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#pull-requests">Pull requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CONTRIBUTING.html#pull-request-checklist">Pull request checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CONTRIBUTING.html#commit-messages">Commit messages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#code">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#building">Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#useful-cmake-flags">Useful CMake flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#test">Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#style-guide">Style guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#development-cycle">Development cycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#branch-model">Branch model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#release-cycle">Release cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#what-version-should-i-use-development-or-stable">What version should I use: development or stable?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release history</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#release-notes">Release notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-7-0">Qiskit Terra 0.7.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-7-0">Upgrading to 0.7.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#deprecations">Deprecations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-6-0">Qiskit Terra 0.6.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-6-0">Upgrading to 0.6.0</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#qiskit-terra-0-5-0">Qiskit Terra 0.5.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#upgrading-to-0-5-0">Upgrading to 0.5.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#changelog">Changelog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id1">0.7.0 - 2018-12-19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#added">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#changed">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#deprecated">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#fixed">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#removed">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id2">0.6.0 - 2018-10-04</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id3">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id4">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id5">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id6">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id7">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id8">0.5.7 - 2018-07-19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id9">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id10">0.5.6 - 2018-07-06</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id11">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id12">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id13">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id14">0.5.5 - 2018-07-02</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id15">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id16">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id17">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id18">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id19">0.5.4 - 2018-06-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id20">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id21">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id22">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id23">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id24">0.5.3 - 2018-05-29</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id25">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id26">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id27">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id28">0.5.2 - 2018-05-21</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id29">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id30">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id31">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id32">0.5.1 - 2018-05-15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id33">0.5.0 - 2018-05-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#improvements">Improvements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id34">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id35">Deprecated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id36">0.4.15 - 2018-05-07</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id37">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id38">0.4.14 - 2018-04-18</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id39">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id40">0.4.13 - 2018-04-16</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id41">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id42">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id43">0.4.12 - 2018-03-11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id44">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id45">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id46">0.4.11 - 2018-03-13</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id47">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id48">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id49">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id50">0.4.10 - 2018-03-06</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id51">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id52">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id53">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id54">0.4.9 - 2018-02-12</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id55">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id56">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id57">0.4.8 - 2018-01-29</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id58">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id59">0.4.7 - 2018-01-26</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id60">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id61">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id62">0.4.6 - 2018-01-22</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id63">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id64">0.4.4 - 2018-01-09</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id65">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id66">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id67">0.4.3 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id68">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id69">0.4.2 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id70">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="release_history.html#id71">0.4.0 - 2018-01-08</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id72">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id73">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id74">Removed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release_history.html#id75">Fixed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_autodoc/qiskit.html">Terra SDK Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html">qiskit.qiskiterror module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html#members">Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qiskiterror.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.unroll.html">qiskit.unroll module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.circuit.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.converters.html">qiskit.converters package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.converters.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.dagcircuit.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.extensions.html">qiskit.extensions package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.extensions.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.mapper.html">qiskit.mapper package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.mapper.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.providers.html">qiskit.providers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.providers.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qasm.html">qiskit.qasm package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qasm.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.qobj.html">qiskit.qobj package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.qobj.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.quantum_info.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.result.html">qiskit.result package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.result.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.transpiler.html">qiskit.transpiler package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.transpiler.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.unrollers.html">qiskit.unrollers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.unrollers.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.validation.html">qiskit.validation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.validation.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_autodoc/qiskit.wrapper.html">qiskit.wrapper package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.wrapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autodoc/qiskit.wrapper.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autodoc/qiskit.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+      </nav>
+  
+  </div>
+
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <div class="section" id="getting-started-with-qiskit-terra">
+<h1>Getting Started with Qiskit Terra<a class="headerlink" href="#getting-started-with-qiskit-terra" title="Permalink to this headline">¶</a></h1>
+<p>First let’s start by importing some basic features of Qiskit Terra.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">execute</span>
+</pre></div>
+</div>
+<p>The basic concept of Qiskit Terra is an array of quantum circuits. The
+workflow consists of two stages: Build, and Execute. Build allows you to
+make different quantum circuits that represent the problem you are
+solving; Execute allows you to run them on different backends.&nbsp;&nbsp;After
+the jobs have been run, the data is collected. There are methods for
+putting this data together, depending on the program. This either gives
+you the answer you wanted, or allows you to make a better program for
+the next instance.</p>
+<div class="section" id="building-the-circuit">
+<h2>Building the circuit<a class="headerlink" href="#building-the-circuit" title="Permalink to this headline">¶</a></h2>
+<p>The basic elements needed for your first program are the QuantumCircuit,
+and QuantumRegister.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Quantum Register with 3 qubits.</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a Quantum Circuit acting on the q register</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Naming the QuantumRegister is optional and not required..</p>
+</div>
+<p>After you create the circuit with its registers, you can add gates to
+manipulate the registers. As you proceed through the documentation you
+will find more gates and circuits but the below is an example of a
+quantum circuit that makes a GHZ state, <span class="math notranslate nohighlight">\((|000&gt;+|111&gt;)/\sqrt{2}\)</span>.
+The circuit that does this consists of a quantum register of three
+qubits and a gate sequence <span class="math notranslate nohighlight">\(H\)</span> on qubit 0 (making a
+superposition), followed by <span class="math notranslate nohighlight">\(C_X\)</span> between qubit 0 and 1 and a
+<span class="math notranslate nohighlight">\(C_X\)</span> between qubit 0 and 2. In Qiskit Terra this is done using</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a H gate on qubit 0, putting this qubit in superposition.</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Add a CX (CNOT) gate on control qubit 0 and target qubit 1, putting</span>
+<span class="c1"># the qubits in a Bell state.</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># Add a CX (CNOT) gate on control qubit 0 and target qubit 2, putting</span>
+<span class="c1"># the qubits in a GHZ state.</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualize-circuit">
+<h2>Visualize Circuit<a class="headerlink" href="#visualize-circuit" title="Permalink to this headline">¶</a></h2>
+<p>You can visualize your circuit using Qiskit Terra <code class="docutils literal notranslate"><span class="pre">circuit_drawer</span></code>,
+which plots circuit in the form found in many textbooks.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="k">import</span> <span class="n">circuit_drawer</span>
+
+<span class="n">circuit_drawer</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_10_0.png" src="_images/getting_started_with_qiskit_terra_10_0.png" />
+</div>
+<div class="section" id="qiskit-aer-backends">
+<h2>Qiskit Aer backends<a class="headerlink" href="#qiskit-aer-backends" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="statevector-backend">
+<h3>Statevector backend<a class="headerlink" href="#statevector-backend" title="Permalink to this headline">¶</a></h3>
+<p>In Qiskit Aer we have many simulator backends that allow the simulation
+of quantum circuits. The most common is the <code class="docutils literal notranslate"><span class="pre">statevector_simulator</span></code>.
+This simulator returns the quantum state which is a complex vector of
+dimensions <span class="math notranslate nohighlight">\(2^n\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number of qubits (so be
+careful using this as it will quickly get too large to run on your
+machine).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The tensor order used in qiskit goes
+<span class="math notranslate nohighlight">\(Q_n\otimes \cdots \otimes Q_1\otimes Q_0\)</span> which is not the
+standard used in many physics textbooks and results is the <span class="math notranslate nohighlight">\(C_X\)</span>
+between the control qubit 0 and target qubit 1 having the form</p>
+<div class="last math notranslate nohighlight">
+\[\begin{split}C_X = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\  0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\\end{pmatrix}\end{split}\]</div>
+</div>
+<p>To run the above circuit using the statevector simulator first you need
+to import Aer and then set the backend to <code class="docutils literal notranslate"><span class="pre">statevector_simulator</span></code>.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">Aer</span>
+
+<span class="c1"># Run the quantum circuit on a statevector simulator backend</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we have chosen the backend its time to compile and run the quantum
+circuit. In Qiskit Terra we provide the <code class="docutils literal notranslate"><span class="pre">execute</span></code> function for this
+which returns a job object</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can obtain the above parameters in Jupyter. Simply place the
+text cursor on a function and press Shift+Tab.</p>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Quantum Program for execution</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When you run a program a job object is made that has the following two
+useful methods <code class="docutils literal notranslate"><span class="pre">job.status()</span></code> and <code class="docutils literal notranslate"><span class="pre">job.result()</span></code> which returns the
+status of the job a result object respectiviely.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Jobs run asynchronous but when the result method is called it
+switches to synchronous and waits for it to finish before moving on to
+another task.</p>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The results object contains the data and Qiskit Terra provides the
+method <code class="docutils literal notranslate"><span class="pre">result.get_statevector(circ)</span></code> to return the statevector for
+the quantum circuit.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">outputstate</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;simulation: &quot;</span><span class="p">,</span> <span class="n">result</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">outputstate</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simulation:  COMPLETED
+[0.707+0.j 0.   +0.j 0.   +0.j 0.   +0.j 0.   +0.j 0.   +0.j 0.   +0.j
+ 0.707+0.j]
+</pre></div>
+</div>
+<p>Qiskit Terra also provides a visualization toolbox to allow you to view
+these results.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="k">import</span> <span class="n">plot_state</span>
+<span class="n">plot_state</span><span class="p">(</span><span class="n">outputstate</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_21_0.png" src="_images/getting_started_with_qiskit_terra_21_0.png" />
+</div>
+<div class="section" id="unitary-backend">
+<h3>Unitary backend<a class="headerlink" href="#unitary-backend" title="Permalink to this headline">¶</a></h3>
+<p>Qiskit Aer also includes a <code class="docutils literal notranslate"><span class="pre">unitary_simulator</span></code> that works provided all
+the elements in the circuit are unitary operations. This backend
+calculates the <span class="math notranslate nohighlight">\(2^n \times 2^n\)</span> matrix representing the gates in
+the quantum circuit.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the quantum circuit on a unitary simulator backend</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># Show the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;simulation: &quot;</span><span class="p">,</span> <span class="n">result</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">(</span><span class="n">circ</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simulation:  COMPLETED
+[[ 0.707+0.j  0.707-0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j
+   0.   +0.j  0.   +0.j]
+ [ 0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j
+   0.707+0.j -0.707+0.j]
+ [ 0.   +0.j  0.   +0.j  0.707+0.j  0.707-0.j  0.   +0.j  0.   +0.j
+   0.   +0.j  0.   +0.j]
+ [ 0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.707+0.j -0.707+0.j
+   0.   +0.j  0.   +0.j]
+ [ 0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.707+0.j  0.707-0.j
+   0.   +0.j  0.   +0.j]
+ [ 0.   +0.j  0.   +0.j  0.707+0.j -0.707+0.j  0.   +0.j  0.   +0.j
+   0.   +0.j  0.   +0.j]
+ [ 0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j
+   0.707+0.j  0.707-0.j]
+ [ 0.707+0.j -0.707+0.j  0.   +0.j  0.   +0.j  0.   +0.j  0.   +0.j
+   0.   +0.j  0.   +0.j]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="openqasm-backend">
+<h3>OpenQASM backend<a class="headerlink" href="#openqasm-backend" title="Permalink to this headline">¶</a></h3>
+<p>The above while useful for understanding a quantum circuit scales
+exponential with the number of qubits and as such is not physical
+(cannot be obtained from a single shot in a real quantum experiment). In
+a real device we need to have a measurement otherwise no information is
+extracted from the quantum computer and the above is simply internal
+representations. The measurements cause the quantum system to collapse
+into classical bits. For example, when independent measurements are made
+on each qubit the GHZ state <span class="math notranslate nohighlight">\((|000&gt;+|111&gt;)/\sqrt{2}\)</span>. will
+collapse into either <span class="math notranslate nohighlight">\(|000&gt;\)</span> or <span class="math notranslate nohighlight">\(|111&gt;\)</span> with equal
+probability.</p>
+<p>To see this, we can make a second circuit representing the measurements
+and use the addion operation to add these circuits together.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Classical Register with 3 bits.</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="c1"># Create a Quantum Circuit</span>
+<span class="n">meas</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">meas</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="c1"># map the quantum measurement to the classical bits</span>
+<span class="n">meas</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># combining the circuits</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">circ</span><span class="o">+</span><span class="n">meas</span>
+
+<span class="c1">#drawing the circuit</span>
+<span class="n">circuit_drawer</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_27_0.png" src="_images/getting_started_with_qiskit_terra_27_0.png" />
+<p>This circuit consists of an additional classical register and three
+measurements that are used to map the outcome of qubits to this
+classical bits.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The classical bits are ordered so that the MSB is to the left
+and the LSB is to the right. This is the standard binary sequence order.
+For example in 01 the MSB is 0 and the LSB is 1 and is why in Qiskit we
+use the non-standard tensor product order.</p>
+</div>
+<p>To simulate this circuit Qiskit Aer has a <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> which is
+designed to mimic an ideal quantum device.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend_sim</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">job_sim</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend_sim</span><span class="p">)</span>
+<span class="n">result_sim</span> <span class="o">=</span> <span class="n">job_sim</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once you have a result object you can access the counts via the function
+<code class="docutils literal notranslate"><span class="pre">get_counts(circuit)</span></code>. This gives you the binary outcomes of the
+circuit you have run.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">result_sim</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;111&#39;: 524, &#39;000&#39;: 500}
+</pre></div>
+</div>
+<p>Here we see that approximately 50 percent of the time it is in the 000
+state and 111. Qiskit Terra also provides a function <code class="docutils literal notranslate"><span class="pre">plot_histogram</span></code>
+which allows you to view the outcomes.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="k">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_33_0.png" src="_images/getting_started_with_qiskit_terra_33_0.png" />
+</div>
+</div>
+<div class="section" id="ibmq-backends">
+<h2>IBMQ Backends<a class="headerlink" href="#ibmq-backends" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="real-devices">
+<h3>Real devices<a class="headerlink" href="#real-devices" title="Permalink to this headline">¶</a></h3>
+<p>This is the important part of Qiskit. You can use it to run your
+circuits on real quantum computers using the IBMQ provider. They are
+small and noisy but are advancing at a fast pace. In the next section we
+will go into more details about the provider but for now we will outline
+the basic functions.</p>
+<p>To access IBMQ devices, you’ll need an API token. For the public IBM Q
+devices, you can generate an API token
+<a class="reference external" href="https://quantumexperience.ng.bluemix.net/qx/account/advanced">here</a>
+(create an account if you don’t already have one). For Q Network
+devices, login to the q-console, click your hub, group, and project, and
+expand “Get Access” to generate your API token and access url.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">IBMQ</span>
+</pre></div>
+</div>
+<p>After generating your API token, call,
+<code class="docutils literal notranslate"><span class="pre">IBMQ.save_account('MY_TOKEN')</span></code>. For Q Network users, you’ll also need
+to include your access url: <code class="docutils literal notranslate"><span class="pre">IBMQ.save_account('MY_TOKEN',</span> <span class="pre">'URL')</span></code></p>
+<p>This will store your IBMQ credentials in a local file. Unless your
+registration information has changed, you only need to do this once. You
+may now load your accounts by calling,</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IBMQ</span><span class="o">.</span><span class="n">load_accounts</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now view the list of backends available to you.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available backends:&quot;</span><span class="p">)</span>
+<span class="n">IBMQ</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Available backends:
+
+[&lt;IBMQBackend(&#39;ibmqx4&#39;) from IBMQ()&gt;,
+ &lt;IBMQBackend(&#39;ibmqx5&#39;) from IBMQ()&gt;,
+ &lt;IBMQBackend(&#39;ibmqx2&#39;) from IBMQ()&gt;,
+ &lt;IBMQBackend(&#39;ibmq_16_melbourne&#39;) from IBMQ()&gt;,
+ &lt;IBMQBackend(&#39;ibmq_qasm_simulator&#39;) from IBMQ()&gt;]
+</pre></div>
+</div>
+<p>We now choose a device with the least busy queue which can support our
+program (has at least 3 qubits).</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.backends.ibmq</span> <span class="k">import</span> <span class="n">least_busy</span>
+
+<span class="n">large_enough_devices</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">backends</span><span class="p">(</span>
+    <span class="n">filters</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">configuration</span><span class="p">()[</span><span class="s1">&#39;n_qubits&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span>
+        <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">configuration</span><span class="p">()[</span><span class="s1">&#39;simulator&#39;</span><span class="p">])</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">least_busy</span><span class="p">(</span><span class="n">large_enough_devices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The best backend is &quot;</span> <span class="o">+</span> <span class="n">backend</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The best backend is ibmqx4
+</pre></div>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1024</span>           <span class="c1"># Number of shots to run the program (experiment); maximum is 8192 shots.</span>
+<span class="n">max_credits</span> <span class="o">=</span> <span class="mi">3</span>        <span class="c1"># Maximum number of credits to spend on executions.</span>
+
+<span class="n">job_exp</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="n">max_credits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result_exp</span> <span class="o">=</span> <span class="n">job_exp</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Like before, the counts from the execution can be obtained using
+<code class="docutils literal notranslate"><span class="pre">get_counts(qc)</span></code></p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">counts_exp</span> <span class="o">=</span> <span class="n">result_exp</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts_exp</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_45_0.png" src="_images/getting_started_with_qiskit_terra_45_0.png" />
+</div>
+<div class="section" id="hpc-simulator">
+<h3>HPC Simulator<a class="headerlink" href="#hpc-simulator" title="Permalink to this headline">¶</a></h3>
+<p>The IBMQ provider also comes with a remote optimized simulator called
+<code class="docutils literal notranslate"><span class="pre">ibmq_qasm_simulator</span></code>. This remote simulator is capable of simulating
+up to 32 qubits. It can be used the same way as the remote real
+backends.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;ibmq_qasm_simulator&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1024</span>           <span class="c1"># Number of shots to run the program (experiment); maximum is 8192 shots.</span>
+<span class="n">max_credits</span> <span class="o">=</span> <span class="mi">3</span>        <span class="c1"># Maximum number of credits to spend on executions.</span>
+
+<span class="n">job_hpc</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="n">max_credits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result_hpc</span> <span class="o">=</span> <span class="n">job_hpc</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">counts_hpc</span> <span class="o">=</span> <span class="n">result_hpc</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts_hpc</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/getting_started_with_qiskit_terra_50_0.png" src="_images/getting_started_with_qiskit_terra_50_0.png" />
+</div>
+</div>
+<div class="section" id="retrieving-a-previously-ran-job">
+<h2>Retrieving a previously ran job<a class="headerlink" href="#retrieving-a-previously-ran-job" title="Permalink to this headline">¶</a></h2>
+<p>If your experiment takes longer to run then you have time to wait
+around, or if you simply want to retrieve old jobs back, the IBMQ
+backends allow you to do that. First you would need to save your job’s
+ID:</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jobID</span> <span class="o">=</span> <span class="n">job_exp</span><span class="o">.</span><span class="n">job_id</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JOB ID: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jobID</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>JOB ID: 5be8ae5e17436b0052751909
+</pre></div>
+</div>
+<p>Given a job ID, that job object can be later reconstructed from the
+backend using retrieve_job:</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job_get</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">jobID</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then the results can be obtained from the new job object.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job_get</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;00000&#39;: 367,
+ &#39;00001&#39;: 10,
+ &#39;00010&#39;: 30,
+ &#39;00011&#39;: 27,
+ &#39;00100&#39;: 22,
+ &#39;00101&#39;: 83,
+ &#39;00110&#39;: 50,
+ &#39;00111&#39;: 435}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="install.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>Terra Installation and setup</div>
+         </div>
+     </a>
+     <a id="button-next" href="the_ibmq_provider.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>The IBM Q provider</div>
+        </div>
+     </a>
+        
+        </main>
+    </div>
+  </body>
+</html>
