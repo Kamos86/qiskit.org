@@ -41,6 +41,20 @@
       "weight": 1
     }
   },
+  "/aer": {
+    "src/components/app-shell.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/components/page-aer.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
   "/fun": {
     "src/components/app-shell.js": {
       "type": "script",
